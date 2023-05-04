@@ -10,6 +10,7 @@ setuptools.setup(
     author_email="jacob.kravits@colorado.edu",
     description="Library to parse borg runtime results",
     install_requires=[
+        'more-itertools',
         'pandas',
         'numpy',
         'seaborn',
