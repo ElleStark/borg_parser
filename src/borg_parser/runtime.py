@@ -242,9 +242,21 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
 
     #     self.hypervolume = hypervolume_dict
 
-    def plot_improvements(self):
+    def plot_improvements(
+        self,
+        y_lab='Improvments',
+        x_lab='Function Evaluations'
+    ):
         """
         Plot improvments over the search
+
+        Parameters
+        ----------
+        y_lab : str
+            Y label
+        x_lab : str
+            X label
+
         Returns
         -------
         matplotlib.figure.Figure
@@ -256,8 +268,8 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
         # Plot
         fig = plt.figure()
         sns.lineplot(data=df, x='index', y=0)
-        plt.ylabel('Improvments')
-        plt.xlabel('Function Evaluations')
+        plt.ylabel(y_lab)
+        plt.xlabel(x_lab)
 
         return fig
 
