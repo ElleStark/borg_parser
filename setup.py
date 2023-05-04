@@ -10,7 +10,10 @@ setuptools.setup(
     author_email="jacob.kravits@colorado.edu",
     description="Library to parse borg runtime results",
     install_requires=[
-        '',
+        'pandas',
+        'numpy',
+        'seaborn',
+        'hiplot',
     ],
     classifiers=[
         "Programming Language :: Python :: 3",
@@ -20,4 +23,6 @@ setuptools.setup(
     package_dir={"": "src"},
     packages=setuptools.find_packages(where="src"),
     python_requires=">=3.7",
+    include_package_data=True,
+    package_data={'': ['example_runtime/water_energy.txt']},
 )
