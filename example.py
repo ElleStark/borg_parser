@@ -44,9 +44,9 @@ def main():
     exp = runtime.plot_interactive_front()
     exp.to_html('my_front.html')
 
-    # Hypervolume
+    # Improvements
     fig = runtime.plot_improvements()
-    fig.savefig('my_hypervolume.jpg')
+    fig.savefig('my_improvements.jpg')
 
 
 if __name__ == '__main__':
