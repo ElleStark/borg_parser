@@ -1,4 +1,4 @@
-"""Default datasets included with Paxplot"""
+"""Default datasets included with borg_parser"""
 
 import pkg_resources
 
