@@ -39,8 +39,10 @@ class BorgRuntimeUtils:
         ).T
 
         # Add index
+        # JRK: our version of the runtime file only has 11
+        # entries, not 13
         df_res['nfe_index'] = \
-            [i for i in np.arange(0, len(df_res) // 13) for j in range(13)]
+            [i for i in np.arange(0, len(df_res) // 11) for j in range(11)]
 
         # Parse Data Into Columns
         df_res = pd.pivot(
@@ -169,11 +171,13 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
         df_res = self._parse_stats(
             df_raw
         )
+
+        # JRK: removed entries that our version doesn't have
         self.nfe = df_res.index.to_list()
         self.archive_size = df_res['ArchiveSize'].to_dict()
-        self.elapsed_time = df_res['ElapsedTime'].to_dict()
+        #self.elapsed_time = df_res['ElapsedTime'].to_dict()
         self.improvements = df_res['Improvements'].to_dict()
-        self.mutation_index = df_res['MutationIndex'].to_dict()
+        #self.mutation_index = df_res['MutationIndex'].to_dict()
         self.population_size = df_res['PopulationSize'].to_dict()
         self.restarts = df_res['Restarts'].to_dict()
         self.pcx = df_res['PCX'].to_dict()
