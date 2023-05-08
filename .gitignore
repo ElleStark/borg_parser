@@ -160,3 +160,9 @@ cython_debug/
 #.idea/
 
 .vscode
+.idea/inspectionProfiles/profiles_settings.xml
+.idea/borg_parser.iml
+.idea/misc.xml
+.idea/modules.xml
+.idea/vcs.xml
+.idea/workspace.xml
