@@ -1,5 +1,5 @@
 # borg_parser
-A simple tool for parsing results from the [Borg MOEA](http://borgmoea.org/) and doing basic runtime analysis.
+This is a version of kravitsjacob's simple tool for parsing results from the [Borg MOEA](http://borgmoea.org/) and doing basic runtime analysis. It has been modified to work with output files of BorgRW.
 
 # Installation
 1. In a cloned version of this repository run `$ pip install .` to install `borg_parser` and its dependencies.
