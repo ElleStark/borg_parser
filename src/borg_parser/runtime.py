@@ -352,6 +352,50 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
 
         return exp
 
+    def plot_objectives_parcoord(self):
+        """
+        Create interactive parallel plot of objective values for archive solutions
+        Returns
+        -------
+        hiplot.experiment.Experiment
+            Hiplot experiment
+        """
+        # Get final front
+        nfe = self.nfe[-1]
+        """
+        df_decs = pd.DataFrame(
+            self.archive_decisions[nfe],
+            columns=self.decision_names
+        )
+        """
+        df_objs = pd.DataFrame(
+            self.archive_objectives[nfe],
+            columns=self.objective_names
+        )
+        """
+        df_metrics = pd.DataFrame(
+            self.archive_metrics[nfe],
+            columns=self.metric_names
+        )
+        """
+        #df_front = pd.concat([df_decs, df_objs, df_metrics], axis=1)
+
+        # Create Plot
+        cols = self.objective_names
+            #self.decision_names +\
+            #self.metric_names
+        cols.reverse()
+        color_col = self.objective_names[0]
+        exp = hip.Experiment.from_dataframe(df_objs)
+        exp.parameters_definition[color_col].colormap = 'interpolateViridis'
+        exp.display_data(hip.Displays.PARALLEL_PLOT).update(
+            {'order': cols}
+        )
+        exp.display_data(hip.Displays.TABLE).update(
+            {'hide': ['uid', 'from_uid']}
+        )
+
+        return exp
 
 class BorgRuntimeAggregator():
     """

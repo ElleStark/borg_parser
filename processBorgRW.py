@@ -6,7 +6,7 @@ def main():
     # Setup - EStark changed structure so that new runtime files are added to datasets.py
     # Add new RunTime.Parsable.txt file to a dedicated folder for that run under the borg_parser directory
     # In datasets.py, create a function to return a stream for that run, then you can call whichever run you need here:
-    path_to_runtime = borg_parser.datasets.BorgRW_400fe_noC_4T()
+    path_to_runtime = borg_parser.datasets.BorgRW_400fe_noC_8T()
 
     decision_names = ["Mead_Surplus_DV Row cat 0",
                       "Mead_Surplus_DV Row cat 1",
@@ -47,10 +47,10 @@ def main():
                       ]
 
     objective_names = [
-        "Objectives.Objective_Powell_3490", "Objectives.Objective_Powell_WY_Release",
-        "Objectives.Objective_Lee_Ferry_Deficit", "Objectives.Objective_Avg_Combo_Storage",
-        "Objectives.Objective_Mead_1000", "Objectives.Objective_LB_Shortage_Volume",
-        "Objectives.Objective_Max_Annual_LB_Shortage", "Objectives.Objective_Max_Delta_Annual_Shortage",
+        "Powell_3490", "Powell_WY_Release",
+        "Lee_Ferry_Deficit", "Avg_Combo_Storage",
+        "Mead_1000", "LB_Shortage_Volume",
+        "Max_Annual_LB_Shortage", "Max_Delta_Annual_Shortage",
         ]
 
 
@@ -69,13 +69,16 @@ def main():
     runtime.set_metric_names(metric_names)
 
     # Interactive parallel
-    exp = runtime.plot_interactive_front()
-    exp.to_html("borgRW_front.html")
+    # exp = runtime.plot_interactive_front()
+    # exp.to_html("borgRW_front.html")
 
     # Improvements
-    fig = runtime.plot_improvements()
-    fig.savefig("borgRW_improvements.jpg")
+    # fig = runtime.plot_improvements()
+    # fig.savefig("borgRW_improvements.jpg")
 
+    # Objectives
+    obj_plot = runtime.plot_objectives_parcoord()
+    obj_plot.to_html("borgRW_objectives.html")
 
 if __name__ == '__main__':
     main()
