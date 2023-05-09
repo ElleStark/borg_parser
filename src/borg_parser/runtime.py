@@ -248,11 +248,11 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
 
     def plot_improvements(
         self,
-        y_lab='Improvments',
+        y_lab='Improvements',
         x_lab='Function Evaluations'
     ):
         """
-        Plot improvments over the search
+        Plot improvements over the search
 
         Parameters
         ----------
@@ -264,7 +264,7 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
         Returns
         -------
         matplotlib.figure.Figure
-            Plot of improvments
+            Plot of improvements
         """
         # Get data
         df = pd.Series(self.improvements).to_frame().reset_index()

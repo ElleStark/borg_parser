@@ -1,12 +1,12 @@
 """Example usage script"""
 
 import borg_parser
-import pkg_resources
 
 def main():
-    # Setup
-    path_to_runtime = pkg_resources.resource_stream(__name__, 'T1_FE400_8Traces/RunTime.Parsable.txt')
-    #path_to_runtime = borg_parser.datasets.water_energy()
+    # Setup - EStark changed structure so that new runtime files are added to datasets.py
+    # Add new RunTime.Parsable.txt file to a dedicated folder for that run under the borg_parser directory
+    # In datasets.py, create a function to return a stream for that run, then you can call whichever run you need here:
+    path_to_runtime = borg_parser.datasets.BorgRW_400fe_noC_4T()
 
     decision_names = ["Mead_Surplus_DV Row cat 0",
                       "Mead_Surplus_DV Row cat 1",
@@ -19,7 +19,7 @@ def main():
                       "Mead_Shortage_e_DV Row cat 6",
                       "Mead_Shortage_e_DV Row cat 7",
                       "Mead_Shortage_V_DV Row cat 0",
-                      "Mead_Shortage_V_DV Row cat 1" ,
+                      "Mead_Shortage_V_DV Row cat 1",
                       "Mead_Shortage_V_DV Row cat 2",
                       "Mead_Shortage_V_DV Row cat 3",
                       "Mead_Shortage_V_DV Row cat 4",
@@ -70,11 +70,11 @@ def main():
 
     # Interactive parallel
     exp = runtime.plot_interactive_front()
-    exp.to_html('borgRW_front.html')
+    exp.to_html("borgRW_front.html")
 
     # Improvements
     fig = runtime.plot_improvements()
-    fig.savefig('borgRW_improvements.jpg')
+    fig.savefig("borgRW_improvements.jpg")
 
 
 if __name__ == '__main__':
