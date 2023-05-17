@@ -46,3 +46,18 @@ def BorgRW_400fe_noC_4T():
     """
     stream = pkg_resources.resource_stream(__name__, 'T2_FE400_4Traces_StressTest_noC/RunTime.Parsable.txt')
     return stream
+
+def BorgRW_200fe_allC_8T():
+    """
+    Practice Borg-RW run trade-off dataset: 4 Stress Test traces (trace 1, 10, 20, and 30)
+    All constraints removed
+    Max function evaluations set to 400
+    See: formulation_NoConstraints_400FEs_StressTest4.xml
+
+    Returns
+    -------
+    stream : _io.BufferedReader
+        Stream of trade-off dataset
+    """
+    stream = pkg_resources.resource_stream(__name__, 'T0_FE200_allC_8Traces/RunTime.Parsable.txt')
+    return stream

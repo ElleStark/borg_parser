@@ -277,6 +277,37 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
 
         return fig
 
+    def plot_constraint_violations(
+        self,
+        y_lab='value',
+        x_lab='Function Evaluations'
+    ):
+        """
+        Plot constraint violations over the search
+
+        Parameters
+        ----------
+        y_lab : str
+            Y label
+        x_lab : str
+            X label
+
+        Returns
+        -------
+        matplotlib.figure.Figure
+            Plot of constraint violations
+        """
+        # Get data
+        df = pd.Series(self.improvements).to_frame().reset_index()
+
+        # Plot
+        fig = plt.figure()
+        sns.lineplot(data=df, x='index', y=0)
+        plt.ylabel(y_lab)
+        plt.xlabel(x_lab)
+
+        return fig
+
     # def plot_hypervolume(self, reference_point):
     #     """
     #     Plot hypervolume over the search
@@ -372,18 +403,9 @@ class BorgRuntimeDiagnostic(BorgRuntimeUtils):
             self.archive_objectives[nfe],
             columns=self.objective_names
         )
-        """
-        df_metrics = pd.DataFrame(
-            self.archive_metrics[nfe],
-            columns=self.metric_names
-        )
-        """
-        #df_front = pd.concat([df_decs, df_objs, df_metrics], axis=1)
 
         # Create Plot
         cols = self.objective_names
-            #self.decision_names +\
-            #self.metric_names
         cols.reverse()
         color_col = self.objective_names[0]
         exp = hip.Experiment.from_dataframe(df_objs)
