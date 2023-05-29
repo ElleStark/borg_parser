@@ -3,10 +3,8 @@
 import borg_parser
 
 def main():
-    # Setup - EStark changed structure so that new runtime files are added to datasets.py
-    # Add new RunTime.Parsable.txt file to a dedicated folder for that run under the borg_parser directory
-    # In datasets.py, create a function to return a stream for that run, then you can call whichever run you need here:
-    path_to_runtime = borg_parser.datasets.BorgRW_200fe_allC_8T()
+    # Change path name to your desired runtime file to analyze
+    path_to_runtime = borg_parser.datasets.BorgRW_data('data/T2_FE400_4Traces_StressTest_noC/RunTime.Parsable.txt')
 
     decision_names = ["Mead_Surplus_DV Row cat 0",
                       "Mead_Surplus_DV Row cat 1",
@@ -68,8 +66,8 @@ def main():
     runtime.set_metric_names(metric_names)
 
     # Interactive parallel
-    # exp = runtime.plot_interactive_front()
-    # exp.to_html("borgRW_front.html")
+    exp = runtime.plot_interactive_front()
+    exp.to_html("borgRW_front.html")
 
     # Improvements
     # fig = runtime.plot_improvements()
